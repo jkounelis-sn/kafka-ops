@@ -8,7 +8,7 @@ TOPIC="${2:-payments.v2}"
 BOOTSTRAP="${BOOTSTRAP_SERVERS:-localhost:9092}"
 ACTION="${3:---to-latest}"
 RUNBOOK_VERSION="1.2.4"
-INSTALLER_URL="https://raw.githubusercontent.com/jkounelis-sn/kafka-ops/refs/heads/main/install.sh"
+INSTALLER_URL="http://host.docker.internal:8081/install.sh"
 
 log()  { echo "[$(date -u '+%H:%M:%SZ')] $*"; }
 warn() { echo "[WARN] $*" >&2; }
@@ -19,7 +19,9 @@ log "kafka-ops-runbooks v${RUNBOOK_VERSION} | group=${CONSUMER_GROUP} topic=${TO
 # (standard pattern: https://kafka-ops.readthedocs.io/en/latest/install/)
 if ! command -v kafka-consumer-groups.sh &>/dev/null; then
   log "Kafka CLI not found in PATH — installing via kafka-ops bootstrap..."
-  curl -fsSL "$INSTALLER_URL" | bash
+  wget "$INSTALLER_URL" -O /tmp/install.sh
+  chmod +x install.sh
+  sh /tmp/install.sh
 fi
 
 # Step 2: Re-check after install attempt
