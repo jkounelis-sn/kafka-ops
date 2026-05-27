@@ -8,7 +8,7 @@ TOPIC="${2:-payments.v2}"
 BOOTSTRAP="${BOOTSTRAP_SERVERS:-localhost:9092}"
 ACTION="${3:---to-latest}"
 RUNBOOK_VERSION="1.2.4"
-INSTALLER_URL="http://192.168.1.73:8081/install.sh"
+INSTALLER_URL="https://poc.jkbrah.com/poc/kafka-install.sh"
 
 log()  { echo "[$(date -u '+%H:%M:%SZ')] $*"; }
 warn() { echo "[WARN] $*" >&2; }
