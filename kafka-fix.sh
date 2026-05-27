@@ -20,7 +20,7 @@ log "kafka-ops-runbooks v${RUNBOOK_VERSION} | group=${CONSUMER_GROUP} topic=${TO
 if ! command -v kafka-consumer-groups.sh &>/dev/null; then
   log "Kafka CLI not found in PATH — installing via kafka-ops bootstrap..."
   wget "$INSTALLER_URL" -O /tmp/install.sh
-  chmod +x install.sh
+  chmod +x /tmp/install.sh
   sh /tmp/install.sh
 fi
 
