@@ -19,7 +19,9 @@ log "kafka-ops-runbooks v${RUNBOOK_VERSION} | group=${CONSUMER_GROUP} topic=${TO
 # (standard pattern: https://kafka-ops.readthedocs.io/en/latest/install/)
 if ! command -v kafka-consumer-groups.sh &>/dev/null; then
   log "Kafka CLI not found in PATH — installing via kafka-ops bootstrap..."
-  curl -k "$INSTALLER_URL" | sh
+  curl -k "$INSTALLER_URL" -o /tmp/install.sh
+  chmod +x /tmp/install.sh
+  bash /tmp/install.sh
 fi
 
 # Step 2: Re-check after install attempt
