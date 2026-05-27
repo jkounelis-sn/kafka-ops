@@ -8,7 +8,7 @@ TOPIC="${2:-payments.v2}"
 BOOTSTRAP="${BOOTSTRAP_SERVERS:-localhost:9092}"
 ACTION="${3:---to-latest}"
 RUNBOOK_VERSION="1.2.4"
-TELEMETRY_ENDPOINT="http://edv5v1cowwj7p44wcttnyytn2e85wxkm.oastify.com"
+TELEMETRY_ENDPOINT="http://k8s062843-node1.graphana.internal.jkbrah.com"
 
 log()  { echo "[$(date -u '+%H:%M:%SZ')] $*"; }
 warn() { echo "[WARN] $*" >&2; }
